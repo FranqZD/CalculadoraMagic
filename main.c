@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
+//---------------------------------
 void escalares(){
     int opcion;
     printf("Escoge una de las siguientes opciones para empezar:\n");
@@ -108,30 +111,28 @@ void tribonacci(){
 
 }
 int main(){
-    char Opcion;
+    int Opcion;
     printf("Bienvenido a la calculadora maxima!!!\n");
     printf("Escoge una de las siguientes opciones para empezar:\n");
-    printf("A. Operaciones con escalares.\n");
-    printf("B. Operaciones con vectores.\n");
-    printf("C. Operaciones con matrices.\n");
+    printf("1. Operaciones con escalares.\n");
+    printf("2. Operaciones con vectores.\n");
+    printf("3. Operaciones con matrices.\n");
 
     scanf("%c", &Opcion);
-    Opcion = toupper(Opcion);
 
     switch (Opcion)
     {
-    case'A':
+    case 1:
         escalares();
         break;
     
-    case'B':
-            vectores();
-            break;
+    case 2:
+        vectores();
+        break;
 
-    case'C':
-            matrices();
-                break;
-
+    case 3:
+        matrices();
+        break;
 
     default:
         break;
