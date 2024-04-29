@@ -8,7 +8,7 @@
 //Funcion vectores calculo de una multiplicacion por producto cruz
 int producto_cruz()
 {
-    int num_elementos,salir;
+    int num_elementos;
     float producto_cruz;
     printf("\nPRODUCTO CRUZ ENTRE DOS VECTORES DE 2 o 3 ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores?: ");
@@ -78,7 +78,7 @@ int producto_cruz()
 //Funcion vectores calculo de una multiplicacion por producto cruz
 int producto_punto()
 {
-    int num_elementos,salir;
+    int num_elementos;
     float producto_punto;
     printf("\nPRODUCTO PUNTO ENTRE DOS VECTORES DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores?: ");
@@ -120,7 +120,7 @@ int producto_punto()
 //Funcion vectores calculo de un angulo entre dos vectores
 int angulo_dos_vectores()
 {
-    int num_elementos,salir;
+    int num_elementos;
     float producto_punto=0,magnitud1=0,magnitud2=0;
     printf("\nANGULO ENTRE DOS VECTORES DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores?: ");
@@ -167,7 +167,7 @@ int angulo_dos_vectores()
 //Funcion vectores calculo de una escalar por un vector
 int escalar_por_vector()
 {
-    int num_elementos,salir;
+    int num_elementos;
     float por=0;
     printf("\nESCALAR POR UN VECTOR DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendra el vector que multiplicaras?: ");
@@ -205,7 +205,7 @@ int escalar_por_vector()
 
 //Funcion vectores resta de dos vectores
 int resta_dos_vectores(){
-    int num_elementos,salir;
+    int num_elementos;
     printf("\nRESTA DE DOS VECTORES DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores que restaras?: ");
     scanf("%i",&num_elementos);
@@ -255,7 +255,7 @@ int resta_dos_vectores(){
 
 //Funcion vectores suma de dos
 int suma_dos_vectores(){
-    int num_elementos,salir;
+    int num_elementos;
     printf("\nSUMA DE DOS VECTORES DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores que sumaras?: ");
     scanf("%i",&num_elementos);
@@ -306,7 +306,7 @@ printf("\n\n");
 int distancia_entre_dos_puntos_espacio(void)
 {
     float x1,x2,y1,y2,z1,z2;
-    int salir;
+
     printf("DISTANCIA ENTRE DOS PUNTOS EN EL ESPACIO.\n"
            "Escriba las coordenadas cartesianas del primer punto.\n");
     printf("Posicion en el eje X: ");
@@ -332,7 +332,6 @@ printf("\n\n");
 //Funcion vectores calculo de la distancia entre dos puntos en un plano
 int distancia_entre_dos_puntos_plano(){
     float x1,x2,y1,y2;
-    int salir;
     printf("DISTANCIA ENTRE DOS PUNTOS EN UN PLANO.\n"
            "Escriba las coordenadas del primer punto.\n");
     printf("Posicion en el eje X: ");
@@ -360,7 +359,6 @@ int tribonacci() {
     int b = 0;
     int c = 1;
     int aux = 0;
-    int salir;
     printf("Ingresa hasta que iteracion se calculara:\n");
     scanf("%i", &valor);
     printf("\n\n");
@@ -377,7 +375,7 @@ int tribonacci() {
 
 //Fibonacci Ez af
 int fibonacci() {
-    int n,salir;
+    int n;
     printf("Introduce un numero para calcular su serie de fibonacci: \n");
     scanf("%d", &n);
     printf("\n\n");
@@ -395,7 +393,7 @@ int fibonacci() {
 
 //Factorial fasilito
 int factorial() {
-    int n,salir;
+    int n;
     printf("Introduce un numero para calcular su factorial: ");
     scanf("%d", &n);
     int factorial = 1;
@@ -407,6 +405,83 @@ int factorial() {
 
         return 1;
 
+}
+
+//Pura formulona
+int Raices(){
+    float a,b,c;
+    float x1,x2;
+    printf("Ingresa las raices de tu polinomio de segundo grado\n");
+    printf("a: ");
+    scanf("%f",&a);
+    printf("b: ");
+    scanf("%f",&b);
+    printf("c: ");
+    scanf("%f",&c);
+    float discriminante = pow(b,2)-4*a*c;
+    if(discriminante>0){
+        x1 = (-b+sqrt(discriminante))/(2*a);
+        x2 = (-b-sqrt(discriminante))/(2*a);
+        printf("Las raices de tu polinomio son: %.2f y %.2f\n",x1,x2);
+    }
+    else if(discriminante==0){
+        x1 = -b/(2*a);
+        printf("La raiz de tu polinomio es: %.2f\n",x1);
+    }else{
+        float real = -b/(2*a);
+        float imaginario = sqrt(-discriminante)/(2*a);
+        printf("Las raices de tu polinomio son: %.2f + %.2fi y %.2f - %.2fi\n",real,imaginario,real,imaginario);
+    }
+    return 1;
+}
+
+//Formulin
+int GradosRad(){
+    int grados;
+    printf("Ingresa los grados a convertir a radianes: ");
+    scanf("%i",&grados);
+    printf("Los grados %i son %.2f radianes\n",grados,grados*(3.14159265/180));
+    return 1;
+}
+
+//Formulin
+int RadGrados(){
+    float radianes;
+    printf("Ingresa los radianes a convertir a grados: ");
+    scanf("%f",&radianes);
+    printf("Los radianes %.2f son %i grados\n",radianes,(int)(radianes*(180/3.14159265)));
+    return 1;
+}
+
+int RectCil(){
+    float x,y,z;
+    printf("Ingresa las coordenadas rectangulares a convertir a cilindricas\n");
+    printf("x: ");
+    scanf("%f",&x);
+    printf("y: ");
+    scanf("%f",&y);
+    printf("z: ");
+    scanf("%f",&z);
+    float r = sqrt(pow(x,2)+pow(y,2));
+    float theta = atan(y/x);
+    printf("Las coordenadas rectangulares %.2f, %.2f, %.2f son %.2f, %.2f, %.2f\n",x,y,z,r,theta,z);
+    return 1;
+}
+
+int rectEsfericas(){
+    float x,y,z;
+    printf("Ingresa las coordenadas rectangulares a convertir a esfericas\n");
+    printf("x: ");
+    scanf("%f",&x);
+    printf("y: ");
+    scanf("%f",&y);
+    printf("z: ");
+    scanf("%f",&z);
+    float r = sqrt(pow(x,2)+pow(y,2)+pow(z,2));
+    float theta = atan(y/x);
+    float phi = acos(z/r);
+    printf("Las coordenadas rectangulares %.2f, %.2f, %.2f son %.2f, %.2f, %.2f\n",x,y,z,r,theta,phi);
+    return 1;
 }
 
 //MENU DE LAS ESCALARES
@@ -484,19 +559,19 @@ int Final = 0;
                         tribonacci();
                         break;
                     case 4:
-
+                        Raices();
                     break;
                     case 5:
-
+                        GradosRad();
                     break;
                     case 6:
-
+                        RadGrados();
                     break;
                     case 7:
-
+                        RectCil();
                     break;
                     case 8:
-
+                        rectEsfericas();
                     break;
                     case 9:
                         o+=1;
