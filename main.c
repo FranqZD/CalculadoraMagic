@@ -3,6 +3,9 @@
 #include <ctype.h>
 #include <math.h>
 
+//VECTORES
+
+//Funcion vectores calculo de una multiplicacion por producto cruz
 int producto_cruz()
 {
     int num_elementos,salir;
@@ -68,16 +71,11 @@ int producto_cruz()
         }
         printf("] = %.2f k\n",i_j);
     }
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
+
         return 1;
 }
 
+//Funcion vectores calculo de una multiplicacion por producto cruz
 int producto_punto()
 {
     int num_elementos,salir;
@@ -116,16 +114,10 @@ int producto_punto()
         producto_punto+=vector_1[i]*vector_2[i];
     }
     printf("%.2f\n",producto_punto);
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
         return 1;
 }
 
+//Funcion vectores calculo de un angulo entre dos vectores
 int angulo_dos_vectores()
 {
     int num_elementos,salir;
@@ -169,21 +161,14 @@ int angulo_dos_vectores()
     }
     printf("%.4f grados\n", (acos((producto_punto)/(sqrt(magnitud1)* sqrt(magnitud2))))*(180/3.14159265));
 
-
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
         return 1;
 }
 
+//Funcion vectores calculo de una escalar por un vector
 int escalar_por_vector()
 {
     int num_elementos,salir;
-    float por;
+    float por=0;
     printf("\nESCALAR POR UN VECTOR DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendra el vector que multiplicaras?: ");
     scanf("%i",&num_elementos);
@@ -194,7 +179,7 @@ int escalar_por_vector()
         scanf("%f",&vector_1[i]);
     }
     printf("El vector sera multiplicado por: ");
-    scanf("%.2f",&por);
+    scanf("%f",&por);
 
     printf("\nEl vector = [");
     for(int i=0;i<num_elementos;i++){
@@ -214,16 +199,11 @@ int escalar_por_vector()
         printf(", ");
     }
     printf("] \n");
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
+    
         return 1;
 }
 
+//Funcion vectores resta de dos vectores
 int resta_dos_vectores(){
     int num_elementos,salir;
     printf("\nRESTA DE DOS VECTORES DE N ELEMENTOS.\n");
@@ -258,7 +238,7 @@ int resta_dos_vectores(){
         printf(", ");
     }
     printf("]");
-
+    printf("\n\n");
     printf("\nLa diferencia de los vectores es: [");
     for (int i=0;i<num_elementos;i++){
         printf("%.2f",vector_1[i]-vector_2[i]);
@@ -268,17 +248,12 @@ int resta_dos_vectores(){
     }
     printf("]");
 
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
+
         return 1;
 
 }
 
+//Funcion vectores suma de dos
 int suma_dos_vectores(){
     int num_elementos,salir;
     printf("\nSUMA DE DOS VECTORES DE N ELEMENTOS.\n");
@@ -312,7 +287,7 @@ int suma_dos_vectores(){
         printf(", ");
     }
     printf("]");
-
+printf("\n\n");
     printf("\nLa suma de los vectores es: [");
     for (int i=0;i<num_elementos;i++){
         printf("%.2f",vector_1[i]+vector_2[i]);
@@ -322,18 +297,12 @@ int suma_dos_vectores(){
     }
     printf("]");
 
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
         return 1;
 
 
 }
 
+//Funcion vectores distancia entre dos puntos
 int distancia_entre_dos_puntos_espacio(void)
 {
     float x1,x2,y1,y2,z1,z2;
@@ -353,20 +322,14 @@ int distancia_entre_dos_puntos_espacio(void)
     scanf("%f",&y2);
     printf("Posicion en el eje Z: ");
     scanf("%f",&z2);
-
+printf("\n\n");
     printf("\nPrimer punto es: (%.2f,%.2f,%.2f), Segundo punto es: (%.2f,%.2f,%.2f)\n"
            "Y la distancia entre ellos es: %.2f",x1,y1,z1,x2,y2,z2, sqrt(pow(x2-x1,2)+pow(y2-y1,2)+pow(z2-z1,2)));
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
         return 1;
 
 }
 
+//Funcion vectores calculo de la distancia entre dos puntos en un plano
 int distancia_entre_dos_puntos_plano(){
     float x1,x2,y1,y2;
     int salir;
@@ -381,23 +344,94 @@ int distancia_entre_dos_puntos_plano(){
     scanf("%f",&x2);
     printf("Posicion en el eje Y: ");
     scanf("%f",&y2);
+    printf("\n\n");
     printf("\nPrimer punto es: (%.2f,%.2f), Segundo punto es: (%.2f,%.2f)\n"
            "Y la distancia entre ellos es: %.2f",x1,y1,x2,y2, sqrt(pow(x2-x1,2)+pow(y2-y1,2)));
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de vectores: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
-        return 1;
+return 1;
 }
 
 
+//ESCALARES
+
+//Calculo de Tribonacci mkbro
+int tribonacci() {
+       int valor = 0;
+    int a = 0;
+    int b = 0;
+    int c = 1;
+    int aux = 0;
+    int salir;
+    printf("Ingresa hasta que iteracion se calculara:\n");
+    scanf("%i", &valor);
+    printf("\n\n");
+    printf("Iteracion 1: %i \nIteracion 2: %i \nIteracion 3: %i \n", a, b, c);
+    for (int i = 0; i < valor-3; i++) {
+        printf("Iteracion %i: %i\n", i+4,a+b+c);
+        aux=c;
+        c += a + b;
+        a = b;
+        b = aux;
+    }
+        return 1;
+}
+
+//Fibonacci Ez af
+int fibonacci() {
+    int n,salir;
+    printf("Introduce un numero para calcular su serie de fibonacci: \n");
+    scanf("%d", &n);
+    printf("\n\n");
+    int a = 0, b = 1, c;
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d\n", a);
+        c = a + b;
+        a = b;
+        b = c;
+    }
+
+        return 1;
+}
+
+//Factorial fasilito
+int factorial() {
+    int n,salir;
+    printf("Introduce un numero para calcular su factorial: ");
+    scanf("%d", &n);
+    int factorial = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        factorial = factorial * i;
+    }
+    printf("\n\nEl factorial de %d es %d\n", n, factorial);
+
+        return 1;
+
+}
+
+//MENU DE LAS ESCALARES
+int menu_escalares() {
+    int opcion;
+    printf("Escoge una de las siguientes opciones para empezar:\n");
+    printf("1. Factorial de un numero.\n");
+    printf("2. Fibonacci de n elementos.\n");
+    printf("3. Tribonacci de n elementos.\n");
+    printf("4. Calculo de raices de un polinomio de segundo grado.\n");
+    printf("5. Conversion de grados a radianes.\n");
+    printf("6. Conversion de radianes a grados.\n");
+    printf("7. Conversion de coordenadas rectangulares a coordenadas cilindricas.\n");
+    printf("8. Conversion de coordenadas rectangulares a coordenadas esfericas.\n");
+    printf("9: Finalizar la calculadora de escalares\n");
+    scanf("%d", &opcion);
+    return opcion;
+}
+
+//MENU DE LOS VECTORES
 int menu_vectores(void)
 {
+
     int Operacion_a_utilizar;
-    printf("Usted ha entrado a las operaciones con vectores.\n");
+    printf("Escoge una de las siguientes opciones para empezar:\n");
     printf("1. Calculo de la distancia entre dos puntos en el plano. \n"
            "2. Calculo de la distancia entre dos puntos en el espacio. \n"
            "3. Suma de dos vectores (de n elementos). \n"
@@ -413,101 +447,20 @@ int menu_vectores(void)
 
 }
 
-
-int tribonacci() {
-    int valor = 0;
-    int a = 0;
-    int b = 0;
-    int c = 1;
-    int salir;
-    printf("Ingresa hasta que iteracion se calculara:");
-    scanf("%i", &valor);
-    printf("%i \n %i \n %i \n", a, b, c);
-    for (int i = 0; i < valor; i++) {
-        a = b;
-        b = c;
-        c = a + b;
-        printf("%i\n", c);
-
-    }
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de escalares: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
-        return 1;
-}
-
-int fibonacci() {
-    int n,salir;
-    printf("Introduce un numero para calcular su serie de fibonacci: ");
-    scanf("%d", &n);
-    int a = 0, b = 1, c;
-    for (int i = 0; i < n; i++)
-    {
-        printf("%d\n", a);
-        c = a + b;
-        a = b;
-        b = c;
-    }
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de escalares: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
-        return 1;
-}
-
-int factorial() {
-    int n,salir;
-    printf("Introduce un numero para calcular su factorial: ");
-    scanf("%d", &n);
-    int factorial = 1;
-    for (int i = 1; i <= n; i++)
-    {
-        factorial = factorial * i;
-    }
-    printf("El factorial de %d es %d\n", n, factorial);
-
-    printf("\nDeseas seguir usando la calculadora?\n"
-           "SI, Volver a la calculadora de escalares: 1\n"
-           "NO, Salir del programa: 0\n");
-    scanf("%i",&salir);
-    if(salir==0)
-        exit(-1);
-    else
-        return 1;
-
-}
-int menu_escalares() {
-    int opcion;
-    printf("Escoge una de las siguientes opciones para empezar:\n");
-    printf("1. Factorial de un numero.\n");
-    printf("2. Fibonacci de n elementos.\n");
-    printf("3. Tribonacci de n elementos.\n");
-    printf("4. Calculo de raices de un polinomio de segundo grado.\n");
-    printf("5. Conversion de grados a radianes.\n");
-    printf("6. Conversion de radianes a grados.\n");
-    printf("7. Conversion de coordenadas rectangulares a coordenadas cilindricas.\n");
-    printf("8. Conversion de coordenadas rectangulares a coordenadas esfericas.\n");
-    scanf("%d", &opcion);
-    return opcion;
-}
-
-
 void matrices(){
 
 }
 
 
-int main() {
-    char Opcion;
+int main(void) {
+int Final = 0;
+    
+    
     printf("Bienvenido a la calculadora maxima!!!\n");
     printf("Escoge una de las siguientes opciones para empezar:\n");
+    while (Final==0)
+    {
+    char Opcion;
     printf("A. Operaciones con escalares.\n");
     printf("B. Operaciones con vectores.\n");
     printf("C. Operaciones con matrices.\n");
@@ -515,9 +468,11 @@ int main() {
     scanf("%c", &Opcion);
     Opcion = toupper(Opcion);
     int o = 0;
+    while (o==0){
+        system("cls");
     switch (Opcion) {
+        //MENU DE LAS ESCALARES
         case 'A':
-            while (o==0){
                 switch (menu_escalares()) {
                     case 1:
                         factorial();
@@ -529,16 +484,29 @@ int main() {
                         tribonacci();
                         break;
                     case 4:
+
+                    break;
                     case 5:
+
+                    break;
                     case 6:
+
+                    break;
                     case 7:
+
+                    break;
                     case 8:
+
+                    break;
                     case 9:
                         o+=1;
-                }
+                        break;
+                        default:
+                        printf("Esa no es una opcion valida \n");
             }
+            break;
+            //MENU DE LOS VECTOREs
         case 'B':
-            while (o == 0) {
                 switch (menu_vectores()) {
                     case 1:
                         distancia_entre_dos_puntos_plano();
@@ -566,17 +534,31 @@ int main() {
                         break;
                     case 9:
                         o+=1;
+                        break;
                     default:
-                        printf("El numero que escribiste no correspnde a ninguna operacion");
+                        printf("Esa no es una opcion valida \n");
                         break;
                 }
-            }
+                break;
         case 'C':
+        //MENU DE LAS MATRICES
             matrices();
             break;
         default:
+        printf("Esa no es una opcion valida \n");
+            break;
             break;
                 }
+                        system("pause");
+    }
+                printf("Quieres hacer alguna otra operacion? \n 0: SI\n 1: NO\n");
+                scanf("%i",&Final);
+                if(Final==0){
+                    o=0;
+                }
+             fflush(stdin);   
+}
+return 0;
 }
 
 
