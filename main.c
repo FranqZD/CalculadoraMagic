@@ -10,7 +10,7 @@ int exe(void){
     return 0;
 }
 //Funcion vectores calculo de una multiplicacion por producto cruz
-int producto_cruz()
+void producto_cruz()
 {
     int num_elementos;
     float producto_cruz;
@@ -80,7 +80,7 @@ int producto_cruz()
 }
 
 //Funcion vectores calculo de una multiplicacion por producto cruz
-int producto_punto()
+void producto_punto()
 {
     int num_elementos;
     float producto_punto;
@@ -122,7 +122,7 @@ int producto_punto()
 }
 
 //Funcion vectores calculo de un angulo entre dos vectores
-int angulo_dos_vectores()
+void angulo_dos_vectores()
 {
     int num_elementos;
     float producto_punto=0,magnitud1=0,magnitud2=0;
@@ -169,7 +169,7 @@ int angulo_dos_vectores()
 }
 
 //Funcion vectores calculo de una escalar por un vector
-int escalar_por_vector()
+void escalar_por_vector()
 {
     int num_elementos;
     float por=0;
@@ -208,7 +208,7 @@ int escalar_por_vector()
 }
 
 //Funcion vectores resta de dos vectores
-int resta_dos_vectores(){
+void resta_dos_vectores(){
     int num_elementos;
     printf("\nRESTA DE DOS VECTORES DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores que restaras?: ");
@@ -258,7 +258,7 @@ int resta_dos_vectores(){
 }
 
 //Funcion vectores suma de dos
-int suma_dos_vectores(){
+void suma_dos_vectores(){
     int num_elementos;
     printf("\nSUMA DE DOS VECTORES DE N ELEMENTOS.\n");
     printf("Cuantos elementos tendran los vectores que sumaras?: ");
@@ -307,7 +307,7 @@ printf("\n\n");
 }
 
 //Funcion vectores distancia entre dos puntos
-int distancia_entre_dos_puntos_espacio(void)
+void distancia_entre_dos_puntos_espacio(void)
 {
     float x1,x2,y1,y2,z1,z2;
 
@@ -334,7 +334,7 @@ printf("\n\n");
 }
 
 //Funcion vectores calculo de la distancia entre dos puntos en un plano
-int distancia_entre_dos_puntos_plano(){
+void distancia_entre_dos_puntos_plano(){
     float x1,x2,y1,y2;
     printf("DISTANCIA ENTRE DOS PUNTOS EN UN PLANO.\n"
            "Escriba las coordenadas del primer punto.\n");
@@ -357,7 +357,7 @@ return 1;
 //ESCALARES
 
 //Calculo de Tribonacci mkbro
-int tribonacci() {
+void tribonacci() {
        int valor = 0;
     int a = 0;
     int b = 0;
@@ -378,7 +378,7 @@ int tribonacci() {
 }
 
 //Fibonacci Ez af
-int fibonacci() {
+void fibonacci() {
     int n;
     printf("Introduce un numero para calcular su serie de fibonacci: \n");
     scanf("%d", &n);
@@ -396,7 +396,7 @@ int fibonacci() {
 }
 
 //Factorial fasilito
-int factorial() {
+void factorial() {
     int n;
     printf("Introduce un numero para calcular su factorial: ");
     scanf("%d", &n);
@@ -412,7 +412,7 @@ int factorial() {
 }
 
 //Pura formulona
-int Raices(){
+void Raices(){
     float a,b,c;
     float x1,x2;
     printf("Ingresa las raices de tu polinomio de segundo grado\n");
@@ -440,7 +440,7 @@ int Raices(){
 }
 
 //Formulin
-int GradosRad(){
+void GradosRad(){
     int grados;
     printf("Ingresa los grados a convertir a radianes: ");
     scanf("%i",&grados);
@@ -449,7 +449,7 @@ int GradosRad(){
 }
 
 //Formulin
-int RadGrados(){
+void RadGrados(){
     float radianes;
     printf("Ingresa los radianes a convertir a grados: ");
     scanf("%f",&radianes);
@@ -457,7 +457,7 @@ int RadGrados(){
     return 1;
 }
 
-int RectCil(){
+void RectCil(){
     float x,y,z;
     printf("Ingresa las coordenadas rectangulares a convertir a cilindricas\n");
     printf("x: ");
@@ -472,7 +472,7 @@ int RectCil(){
     return 1;
 }
 
-int rectEsfericas(){
+void rectEsfericas(){
     float x,y,z;
     printf("Ingresa las coordenadas rectangulares a convertir a esfericas\n");
     printf("x: ");
@@ -533,19 +533,20 @@ int menu_matrices(void)
     printf("Escoge una de las siguientes opciones para empezar:\n");
     printf("1. Suma de dos matrices (de n x m elementos). \n"
            "2. Resta de dos matrices (de n x m elementos). \n"
-           "3. Transposición de una matriz (de n x m elementos). \n"
-           "4. Mul plicación de un escalar por una matriz (la matriz ene n x m elementos). \n"
-           "5. Mul plicación de dos matrices (las dimensiones de las matrices son indicadas por el \n"
+           "3. Transposicion de una matriz (de n x m elementos). \n"
+           "4. Multiplicacion de un escalar por una matriz (la matriz ene n x m elementos). \n"
+           "5. Multiplicacion de dos matrices (las dimensiones de las matrices son indicadas por el \n"
            "usuario). \n"
-           "6. Potencia ‘n’ de una matriz (de n x m elementos). \n"
-           "7. Cálculo del determinante de una matriz u lizando la regla de Cramer."
-           "a. Aplica sólo para matrices de hasta 4 x 4. ");
+           "6. Potencia n de una matriz (de n x m elementos). \n"
+           "7. Calculo del determinante de una matriz utilizando la regla de Cramer."
+           "a. Aplica solo para matrices de hasta 4 x 4. \n"
+           "8. Volver al menu principal.\n");
     printf("\nSeleccione la operacion a utilizar:  ");
     scanf("%i",&Operacion_a_utilizar);
     return Operacion_a_utilizar;
 
 }
-int determinante(void) {
+void determinante(void) {
     int dim = 0;
     int ini_col = 0;
     int salir;
@@ -693,7 +694,170 @@ int determinante(void) {
     printf("El determinante de la matriz es: %8.4f", determinante);
 }
 
-int multiplicacion_dos_matrices(){
+void potencia() {
+    // Cálculo de la potencia de una matriz
+    int filas, columnas;
+    printf("Ingresa las dimensiones de la matriz, filas y columnas separadas por un espacio: ");
+    scanf("%i %i", &filas, &columnas);
+    
+    float Matriz[filas][columnas];
+    
+    printf("Ingresa los valores de los elementos de tu matriz:\n");
+    for(int i = 0; i < filas; i++) {
+        for(int j = 0; j < columnas; j++) {
+            printf("Valor en la fila %i, columna %i: ", i + 1, j + 1);
+            scanf("%f", &Matriz[i][j]);
+        }
+    }
+    
+    printf("La matriz es:\n");
+    for(int f = 0; f < filas; f++) {
+        printf("|");
+        for(int g = 0; g < columnas; g++) {
+            printf(" %.2f ", Matriz[f][g]);
+        }
+        printf("|\n");
+    }
+    
+    int potencia;
+    printf("Ingresa la potencia a la que deseas elevar la matriz: ");
+    scanf("%i", &potencia);
+    
+    float MatrizR[filas][columnas];
+    
+    // Inicializar la matriz resultante con la matriz original
+    for(int f = 0; f < filas; f++) {
+        for(int g = 0; g < columnas; g++) {
+            MatrizR[f][g] = Matriz[f][g];
+        }
+    }
+    
+    // Multiplicar la matriz original por sí misma (potencia - 1) veces
+    for(int i = 1; i < potencia; i++) {
+        // Crear una matriz temporal para almacenar el resultado de la multiplicación
+        float Temporal[filas][columnas];
+        
+        // Inicializar la matriz temporal con ceros
+        for(int f = 0; f < filas; f++) {
+            for(int g = 0; g < columnas; g++) {
+                Temporal[f][g] = 0;
+            }
+        }
+        
+        // Realizar la multiplicación de la matriz original por la matriz resultante
+        for(int f = 0; f < filas; f++) {
+            for(int g = 0; g < columnas; g++) {
+                for(int h = 0; h < columnas; h++) {
+                    Temporal[f][g] += Matriz[f][h] * MatrizR[h][g];
+                }
+            }
+        }
+        
+        // Actualizar la matriz resultante con el resultado de la multiplicación
+        for(int f = 0; f < filas; f++) {
+            for(int g = 0; g < columnas; g++) {
+                MatrizR[f][g] = Temporal[f][g];
+            }
+        }
+    }
+    
+    printf("La matriz elevada a la potencia %i es:\n", potencia);
+    for(int f = 0; f < filas; f++) {
+        printf("|");
+        for(int g = 0; g < columnas; g++) {
+            printf(" %.2f ", MatrizR[f][g]);
+        }
+        printf("|\n");
+    }
+}
+
+void transposicion(){
+    int filas, columnas;
+    printf("Ingresa las dimensiones de la matriz, filas y columnas separadas por un espacio: ");
+    scanf("%i %i", &filas, &columnas);
+    
+    float Matriz[filas][columnas];
+    
+    printf("Ingresa los valores de los elementos de tu matriz:\n");
+    for(int i = 0; i < filas; i++) {
+        for(int j = 0; j < columnas; j++) {
+            printf("Valor en la fila %i, columna %i: ", i + 1, j + 1);
+            scanf("%f", &Matriz[i][j]);
+        }
+    }
+    
+    printf("La matriz es:\n");
+    for(int f = 0; f < filas; f++) {
+        printf("|");
+        for(int g = 0; g < columnas; g++) {
+            printf(" %.2f ", Matriz[f][g]);
+        }
+        printf("|\n");
+    }
+    
+    float MatrizT[columnas][filas];
+    
+    for(int f = 0; f < columnas; f++) {
+        for(int g = 0; g < filas; g++) {
+            MatrizT[f][g] = Matriz[g][f];
+        }
+    }
+    
+    printf("La matriz transpuesta es:\n");
+    for(int f = 0; f < columnas; f++) {
+        printf("|");
+        for(int g = 0; g < filas; g++) {
+            printf(" %.2f ", MatrizT[f][g]);
+        }
+        printf("|\n");
+    }
+}
+
+void escalarpormatriz(){
+    int filas, columnas;
+    printf("Ingresa las dimensiones de la matriz, filas y columnas separadas por un espacio: ");
+    scanf("%i %i", &filas, &columnas);
+    
+    float Matriz[filas][columnas];
+    
+    printf("Ingresa los valores de los elementos de tu matriz:\n");
+    for(int i = 0; i < filas; i++) {
+        for(int j = 0; j < columnas; j++) {
+            printf("Valor en la fila %i, columna %i: ", i + 1, j + 1);
+            scanf("%f", &Matriz[i][j]);
+        }
+    }
+    
+    printf("La matriz es:\n");
+    for(int f = 0; f < filas; f++) {
+        printf("|");
+        for(int g = 0; g < columnas; g++) {
+            printf(" %.2f ", Matriz[f][g]);
+        }
+        printf("|\n");
+    }
+    
+    float escalar;
+    printf("Ingresa el escalar por el que deseas multiplicar la matriz: ");
+    scanf("%f", &escalar);
+    
+    for(int f = 0; f < filas; f++) {
+        for(int g = 0; g < columnas; g++) {
+            Matriz[f][g] *= escalar;
+        }
+    }
+    
+    printf("La matriz multiplicada por el escalar es:\n");
+    for(int f = 0; f < filas; f++) {
+        printf("|");
+        for(int g = 0; g < columnas; g++) {
+            printf(" %.2f ", Matriz[f][g]);
+        }
+        printf("|\n");
+    }
+}
+
+void multiplicacion_dos_matrices(){
     float **matrizA;
     float **matrizB;
     float **matrizR;
@@ -809,7 +973,7 @@ int multiplicacion_dos_matrices(){
     free(matrizR);
 }
 
-int suma_dos_matrices(){
+void suma_dos_matrices(){
     int filas,columnas,salir;
     printf("Ingresa la dimenson de las matrices, filas y columnas separadas por un espacio: ");
     scanf("%i",&filas);
@@ -867,7 +1031,7 @@ int suma_dos_matrices(){
         return 1;
 }
 
-int resta_dos_matrices() {
+void resta_dos_matrices() {
 
     int filas, columnas, salir;
     printf("Ingresa la dimenson de las matrices, filas y columnas separadas por un espacio: ");
@@ -1011,14 +1175,29 @@ int Final = 0;
                 break;
         case 'C':
                 switch (menu_matrices()) {
+                    //Hecho
                     case 1:
                         suma_dos_matrices();
                         break;
+                        //Hecho
                     case 2:
                         resta_dos_matrices();
                         break;
+                        //Hecho
+                    case 3:
+                        transposicion();
+                    break;
+                    //progress
+                    case 4:
+                        escalarpormatriz();
+                        break;
+                        //Hecho
                     case 5:
                         multiplicacion_dos_matrices();
+                        break;
+                        //Hecho
+                    case 6:
+                        potencia();
                         break;
                     case 7:
                         determinante();
