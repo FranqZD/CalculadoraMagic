@@ -1077,7 +1077,6 @@ void resta_dos_matrices() {
 
 
 int main(void) {
-    exe();
 int Final = 0;
     
     
