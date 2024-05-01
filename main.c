@@ -4,7 +4,11 @@
 #include <math.h>
 
 //VECTORES
-
+int exe(void){
+    double arreglo[5][5][5];
+    printf("%zu",sizeof arreglo);
+    return 0;
+}
 //Funcion vectores calculo de una multiplicacion por producto cruz
 int producto_cruz()
 {
@@ -522,12 +526,401 @@ int menu_vectores(void)
 
 }
 
-void matrices(){
+int menu_matrices(void)
+{
 
+    int Operacion_a_utilizar;
+    printf("Escoge una de las siguientes opciones para empezar:\n");
+    printf("1. Suma de dos matrices (de n x m elementos). \n"
+           "2. Resta de dos matrices (de n x m elementos). \n"
+           "3. Transposición de una matriz (de n x m elementos). \n"
+           "4. Mul plicación de un escalar por una matriz (la matriz ene n x m elementos). \n"
+           "5. Mul plicación de dos matrices (las dimensiones de las matrices son indicadas por el \n"
+           "usuario). \n"
+           "6. Potencia ‘n’ de una matriz (de n x m elementos). \n"
+           "7. Cálculo del determinante de una matriz u lizando la regla de Cramer."
+           "a. Aplica sólo para matrices de hasta 4 x 4. ");
+    printf("\nSeleccione la operacion a utilizar:  ");
+    scanf("%i",&Operacion_a_utilizar);
+    return Operacion_a_utilizar;
+
+}
+int determinante(void) {
+    int dim = 0;
+    int ini_col = 0;
+    int salir;
+    float producto = 1;
+    float determinante = 0;
+    float matriz[4][7] = {{0},{0},{0},{0}};
+
+    fflush(stdin);
+    printf("Este programa calcula el determinante de matrices de 2x2, 3x3 o 4x4.\n");
+    printf("Coloca la dimension de la matriz: ");
+    scanf("%d", &dim);
+    printf("\n");
+
+    for(int i=0; i < dim; i++) {
+        for (int j=0; j < dim; j++) {
+            printf("Coloca el valor correspondiente a matriz[%d][%d]: ", i, j);
+            scanf("%f", &matriz[i][j]);
+        }
+    }
+
+    if (dim == 2) {
+        determinante = matriz[0][0]*matriz[1][1]-matriz[0][1]*matriz[1][0];
+    } else if (dim == 3) {
+        //Copiando columnas
+        for (int i=0; i < dim; i++) {
+            matriz[i][dim] = matriz[i][0];
+            matriz[i][dim+1] = matriz[i][1];
+        }
+
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = 0; i < dim; j++, i++) {
+                producto *= matriz[i][j];
+            }
+            determinante += producto;
+            ini_col++;
+            producto = 1;
+        }
+
+        ini_col = 0;
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = dim-1; i >= 0; j++, i--) {
+                producto *= matriz[i][j];
+            }
+            determinante -= producto;
+            ini_col++;
+            producto = 1;
+        }
+    } else if(dim == 4) {
+
+        //Copiando columnas
+        for (int i=0; i < dim; i++) {
+            matriz[i][dim] = matriz[i][0];
+            matriz[i][dim+1] = matriz[i][1];
+            matriz[i][dim+2] = matriz[i][2];
+        }
+
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = 0; i < dim; j++, i++) {
+                producto *= matriz[i][j];
+            }
+            determinante += pow(-1,ini_col)*producto;
+            ini_col++;
+            producto = 1;
+        }
+
+        ini_col = 0;
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = dim-1; i >= 0; j++, i--) {
+                producto *= matriz[i][j];
+            }
+            determinante += pow(-1,ini_col)*producto;
+            ini_col++;
+            producto = 1;
+        }
+
+        //Intercambio de columnas
+        float temp;
+        for(int i=0; i<dim; i++) {
+            temp = matriz[i][1];
+            matriz[i][1] = matriz[i][2];
+            matriz[i][2] = temp;
+        }
+        //Copiando columnas
+        for (int i=0; i < dim; i++) {
+            matriz[i][dim] = matriz[i][0];
+            matriz[i][dim+1] = matriz[i][1];
+            matriz[i][dim+2] = matriz[i][2];
+        }
+
+        ini_col = 0;
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = 0; i < dim; j++, i++) {
+                producto *= matriz[i][j];
+            }
+            determinante += pow(-1,ini_col+1)*producto;
+            ini_col++;
+            producto = 1;
+        }
+
+        ini_col = 0;
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = dim-1; i >= 0; j++, i--) {
+                producto *= matriz[i][j];
+            }
+            determinante += pow(-1,ini_col+1)*producto;
+            ini_col++;
+            producto = 1;
+        }
+
+        //Intercambio de columnas
+        for(int i=0; i<dim; i++) {
+            temp = matriz[i][2];
+            matriz[i][2] = matriz[i][3];
+            matriz[i][3] = temp;
+        }
+
+        //Copiando columnas
+        for (int i=0; i < dim; i++) {
+            matriz[i][dim] = matriz[i][0];
+            matriz[i][dim+1] = matriz[i][1];
+            matriz[i][dim+2] = matriz[i][2];
+        }
+
+        ini_col = 0;
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = 0; i < dim; j++, i++) {
+                producto *= matriz[i][j];
+            }
+            determinante += pow(-1,ini_col)*producto;
+            ini_col++;
+            producto = 1;
+        }
+
+        ini_col = 0;
+        for (int elem = 0; elem < dim; elem++) {
+            for (int j=ini_col, i = dim-1; i >= 0; j++, i--) {
+                producto *= matriz[i][j];
+            }
+            determinante += pow(-1,ini_col)*producto;
+            ini_col++;
+            producto = 1;
+        }
+    }
+
+    printf("El determinante de la matriz es: %8.4f", determinante);
+}
+
+int multiplicacion_dos_matrices(){
+    float **matrizA;
+    float **matrizB;
+    float **matrizR;
+    int filMA, colMA,salir;
+    int filMB, colMB;
+
+    printf("Este programa recibe dos matrices definidas por el usuario y obtiene su producto.\n");
+    printf("Indica el numero de filas y columnas de la matrizA separadas por un espacio: ");
+    scanf("%d %d", &filMA, &colMA);
+    printf("Indica el numero de filas y columnas de la matrizB separadas por un espacio: ");
+    scanf("%d %d", &filMB, &colMB);
+
+    if(colMA != filMB) {
+        printf("¡¡¡Corran por sus vidas!!!\n");
+        exit(0);
+    }
+
+    matrizA = malloc(sizeof(*matrizA)*filMA);
+    if(matrizA) {
+        for(int f=0; f < filMA; f++) {
+            matrizA[f] = malloc(sizeof(*matrizA[f])*colMA);
+        }
+    } else {
+        printf("¡¡¡Corran por sus vidas!!!\n");
+        exit(0);
+    }
+
+    matrizB = malloc(sizeof(*matrizB)*filMB);
+    if(matrizB) {
+        for(int f=0; f < filMB; f++) {
+            matrizB[f] = malloc(sizeof(*matrizB[f])*colMB);
+        }
+    } else {
+        printf("¡¡¡Corran por sus vidas!!!\n");
+        exit(0);
+    }
+
+    matrizR = malloc(sizeof(*matrizR)*filMA);
+    if(matrizR) {
+        for(int f=0; f < filMA; f++) {
+            matrizR[f] = malloc(sizeof(*matrizR[f])*colMB);
+        }
+    } else {
+        printf("¡¡¡Corran por sus vidas!!!\n");
+        exit(0);
+    }
+
+    printf("\nIngresa los datos de la matriz A:\n");
+    for(int f=0; f < filMA; f++) {
+        for(int c=0; c < colMA; c++) {
+            printf("Coloca el valor de matrizA[%d][%d]: ", f, c);
+            scanf("%f", &matrizA[f][c]);
+        }
+    }
+
+    printf("\nIngresa los datos de la matriz B:\n");
+    for(int f=0; f < filMB; f++) {
+        for(int c=0; c < colMB; c++) {
+            printf("Coloca el valor de matrizB[%d][%d]: ", f, c);
+            scanf("%f", &matrizB[f][c]);
+        }
+    }
+
+    for (int f=0; f < filMA; f++) {
+        for (int c=0; c < colMB; c++) {
+            matrizR[f][c] = 0.0;
+            for (int interno = 0; interno < colMA; interno++) {
+                matrizR[f][c] += matrizA[f][interno]*matrizB[interno][c];
+            }
+        }
+    }
+
+    printf("Matriz A:\n");
+    for(int f=0; f < filMA; f++) {
+        printf("|");
+        for(int c=0; c < colMA; c++) {
+            printf(" %.4f ", matrizA[f][c]);
+        }
+        printf("|\n");
+    }
+
+    printf("Matriz B:\n");
+    for(int f=0; f < filMB; f++) {
+        printf("|");
+        for(int c=0; c < colMB; c++) {
+            printf(" %.4f ", matrizB[f][c]);
+        }
+        printf("|\n");
+    }
+
+    printf("Matriz R:\n");
+    for(int f=0; f < filMA; f++) {
+        printf("|");
+        for(int c=0; c < colMB; c++) {
+            printf(" %.4f ", matrizR[f][c]);
+        }
+        printf("|\n");
+    }
+
+    for(int i=0; i < filMA; i++) {
+        free(matrizA[i]);
+    }
+    free(matrizA);
+
+    for(int i=0; i < filMB; i++) {
+        free(matrizB[i]);
+    }
+    free(matrizB);
+
+    for(int i=0; i < filMA; i++) {
+        free(matrizR[i]);
+    }
+    free(matrizR);
+}
+
+int suma_dos_matrices(){
+    int filas,columnas,salir;
+    printf("Ingresa la dimenson de las matrices, filas y columnas separadas por un espacio: ");
+    scanf("%i",&filas);
+    scanf("%i",&columnas);
+    float Matriz1[filas][columnas];
+    float Matriz2[filas][columnas];
+    printf("Ingresa los valores de los elementos de tu primera matriz:\n ");
+    for(int i=0;i<filas;i++){
+        for(int j=0;j<columnas;j++){
+            printf("Valor en la fila %i, columna %i: ",i+1,j+1);
+            scanf("%f",&Matriz1[i][j]);
+        }
+    }
+    printf("Ingresa los valores de los elementos de tu segunda matriz:\n ");
+    for(int i=0;i<filas;i++){
+        for(int j=0;j<columnas;j++){
+            printf("Valor en fila %i, columna %i: ",i+1,j+1);
+            scanf("%f",&Matriz2[i][j]);
+        }
+    }
+    printf("\nLa suma entre la matriz 1:\n");
+    for(int f=0;f<filas;f++){
+        printf("|");
+        for(int g=0;g<columnas;g++){
+            printf(" %.2f ",Matriz1[f][g]);
+        }
+        printf("|");
+        printf("\n");
+    }
+    printf("\nY la matriz 2:\n");
+    for(int p=0;p<filas;p++){
+        printf("|");
+        for(int a=0;a<columnas;a++){
+            printf(" %.2f ",Matriz2[p][a]);
+        }
+        printf("|");
+        printf("\n");
+    }
+    printf("\nMatriz de resultado:\n");
+    for(int i=0;i<filas;i++){
+        printf("|");
+        for(int j=0;j<columnas;j++){
+            printf(" %.2f ",(Matriz1[i][j])+(Matriz2[i][j]));
+        }
+        printf("|");
+        printf("\n");
+    }
+    printf("\nDeseas seguir usando la calculadora?\n"
+           "Volver a la calculadora de escalares: 1\n"
+           "Salir del programa: 0\n");
+    scanf("%i",&salir);
+    if(salir==0)
+        exit(-1);
+    else
+        return 1;
+}
+
+int resta_dos_matrices() {
+
+    int filas, columnas, salir;
+    printf("Ingresa la dimenson de las matrices, filas y columnas separadas por un espacio: ");
+    scanf("%i", &filas);
+    scanf("%i", &columnas);
+    float Matriz1[filas][columnas];
+    float Matriz2[filas][columnas];
+    printf("Ingresa los valores de los elementos de tu primera matriz:\n ");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("Valor en la fila %i, columna %i: ", i + 1, j + 1);
+            scanf("%f", &Matriz1[i][j]);
+        }
+    }
+    printf("Ingresa los valores de los elementos de tu segunda matriz:\n ");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("Valor en fila %i, columna %i: ", i + 1, j + 1);
+            scanf("%f", &Matriz2[i][j]);
+        }
+    }
+    printf("\nLa resta entre la matriz 1:\n");
+    for (int f = 0; f < filas; f++) {
+        printf("|");
+        for (int g = 0; g < columnas; g++) {
+            printf(" %.2f ", Matriz1[f][g]);
+        }
+        printf("|");
+        printf("\n");
+    }
+    printf("\nY la matriz 2:\n");
+    for (int p = 0; p < filas; p++) {
+        printf("|");
+        for (int a = 0; a < columnas; a++) {
+            printf(" %.2f ", Matriz2[p][a]);
+        }
+        printf("|");
+        printf("\n");
+    }
+    printf("\nMatriz de resultado:\n");
+    for (int i = 0; i < filas; i++) {
+        printf("|");
+        for (int j = 0; j < columnas; j++) {
+            printf(" %.2f ", (Matriz1[i][j]) - (Matriz2[i][j]));
+        }
+        printf("|");
+        printf("\n");
+    }
 }
 
 
 int main(void) {
+    exe();
 int Final = 0;
     
     
@@ -576,8 +969,9 @@ int Final = 0;
                     case 9:
                         o+=1;
                         break;
-                        default:
+                    default:
                         printf("Esa no es una opcion valida \n");
+                        break;
             }
             break;
             //MENU DE LOS VECTOREs
@@ -616,12 +1010,29 @@ int Final = 0;
                 }
                 break;
         case 'C':
-        //MENU DE LAS MATRICES
-            matrices();
+                switch (menu_matrices()) {
+                    case 1:
+                        suma_dos_matrices();
+                        break;
+                    case 2:
+                        resta_dos_matrices();
+                        break;
+                    case 5:
+                        multiplicacion_dos_matrices();
+                        break;
+                    case 7:
+                        determinante();
+                        break;
+                    case 8:
+                        o+=1;
+                        break;
+                    default:
+                        printf("Esa no es una opcion valida \n");
+                        break;
+                }
             break;
         default:
-        printf("Esa no es una opcion valida \n");
-            break;
+            printf("Esa no es una opcion valida \n");
             break;
                 }
                         system("pause");
