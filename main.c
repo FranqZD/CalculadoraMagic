@@ -2,13 +2,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
-
+//PROYECTO PRIMERA Y SEGUNDA EVALUACIÓN
+//Luis Francisco Zarate Diaz, Luis Fernando Del Real Vázquez
 //VECTORES
-int exe(void){
-    double arreglo[5][5][5];
-    printf("%zu",sizeof arreglo);
-    return 0;
-}
 //Funcion vectores calculo de una multiplicacion por producto cruz
 void producto_cruz()
 {
@@ -76,7 +72,7 @@ void producto_cruz()
         printf("] = %.2f k\n",i_j);
     }
 
-        return 1;
+
 }
 
 //Funcion vectores calculo de una multiplicacion por producto cruz
@@ -118,7 +114,7 @@ void producto_punto()
         producto_punto+=vector_1[i]*vector_2[i];
     }
     printf("%.2f\n",producto_punto);
-        return 1;
+
 }
 
 //Funcion vectores calculo de un angulo entre dos vectores
@@ -165,7 +161,7 @@ void angulo_dos_vectores()
     }
     printf("%.4f grados\n", (acos((producto_punto)/(sqrt(magnitud1)* sqrt(magnitud2))))*(180/3.14159265));
 
-        return 1;
+
 }
 
 //Funcion vectores calculo de una escalar por un vector
@@ -204,7 +200,7 @@ void escalar_por_vector()
     }
     printf("] \n");
     
-        return 1;
+
 }
 
 //Funcion vectores resta de dos vectores
@@ -253,7 +249,7 @@ void resta_dos_vectores(){
     printf("]");
 
 
-        return 1;
+
 
 }
 
@@ -301,7 +297,7 @@ printf("\n\n");
     }
     printf("]");
 
-        return 1;
+
 
 
 }
@@ -329,7 +325,7 @@ void distancia_entre_dos_puntos_espacio(void)
 printf("\n\n");
     printf("\nPrimer punto es: (%.2f,%.2f,%.2f), Segundo punto es: (%.2f,%.2f,%.2f)\n"
            "Y la distancia entre ellos es: %.2f",x1,y1,z1,x2,y2,z2, sqrt(pow(x2-x1,2)+pow(y2-y1,2)+pow(z2-z1,2)));
-        return 1;
+
 
 }
 
@@ -350,7 +346,7 @@ void distancia_entre_dos_puntos_plano(){
     printf("\n\n");
     printf("\nPrimer punto es: (%.2f,%.2f), Segundo punto es: (%.2f,%.2f)\n"
            "Y la distancia entre ellos es: %.2f",x1,y1,x2,y2, sqrt(pow(x2-x1,2)+pow(y2-y1,2)));
-return 1;
+
 }
 
 
@@ -374,7 +370,6 @@ void tribonacci() {
         a = b;
         b = aux;
     }
-        return 1;
 }
 
 //Fibonacci Ez af
@@ -392,7 +387,7 @@ void fibonacci() {
         b = c;
     }
 
-        return 1;
+
 }
 
 //Factorial fasilito
@@ -407,7 +402,7 @@ void factorial() {
     }
     printf("\n\nEl factorial de %d es %d\n", n, factorial);
 
-        return 1;
+
 
 }
 
@@ -436,7 +431,7 @@ void Raices(){
         float imaginario = sqrt(-discriminante)/(2*a);
         printf("Las raices de tu polinomio son: %.2f + %.2fi y %.2f - %.2fi\n",real,imaginario,real,imaginario);
     }
-    return 1;
+
 }
 
 //Formulin
@@ -445,7 +440,7 @@ void GradosRad(){
     printf("Ingresa los grados a convertir a radianes: ");
     scanf("%i",&grados);
     printf("Los grados %i son %.2f radianes\n",grados,grados*(3.14159265/180));
-    return 1;
+
 }
 
 //Formulin
@@ -454,7 +449,7 @@ void RadGrados(){
     printf("Ingresa los radianes a convertir a grados: ");
     scanf("%f",&radianes);
     printf("Los radianes %.2f son %i grados\n",radianes,(int)(radianes*(180/3.14159265)));
-    return 1;
+
 }
 
 void RectCil(){
@@ -469,7 +464,7 @@ void RectCil(){
     float r = sqrt(pow(x,2)+pow(y,2));
     float theta = atan(y/x);
     printf("Las coordenadas rectangulares %.2f, %.2f, %.2f son %.2f, %.2f, %.2f\n",x,y,z,r,theta,z);
-    return 1;
+
 }
 
 void rectEsfericas(){
@@ -485,7 +480,6 @@ void rectEsfericas(){
     float theta = atan(y/x);
     float phi = acos(z/r);
     printf("Las coordenadas rectangulares %.2f, %.2f, %.2f son %.2f, %.2f, %.2f\n",x,y,z,r,theta,phi);
-    return 1;
 }
 
 //MENU DE LAS ESCALARES
@@ -1027,8 +1021,7 @@ void suma_dos_matrices(){
     scanf("%i",&salir);
     if(salir==0)
         exit(-1);
-    else
-        return 1;
+
 }
 
 void resta_dos_matrices() {
